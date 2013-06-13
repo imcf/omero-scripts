@@ -73,7 +73,7 @@ def getSplitView(conn, pixelIds, zStart, zEnd, splitIndexes, channelNames, colou
         mergedColours, width=None, height=None, spacer = 12, algorithm = None, stepping = 1, scalebar = None, overlayColour=(255,255,255)):
     """ This method makes a figure of a number of images, arranged in rows with each row being the split-view
     of a single image. The channels are arranged left to right, with the combined image added on the right.
-    The combined image is rendered according to current settings on the server, but it's channels will be
+    The combined image is rendered according to current settings on the server, but its channels will be
     turned on/off according to @mergedIndexes. 
     No text labels are added to the image at this stage. 
     
