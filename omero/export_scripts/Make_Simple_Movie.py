@@ -882,7 +882,7 @@ def run_script():
 
             # return this fileAnnotation to the client.
             client.setOutput("Message", rstring(message))
-            client.setOutput("Message", rstring("TESTTESTTESTTEST"))
+            client.setOutput("Message", rstring(message + "\n\nTESTTESTTESTTEST"))
             if file_annotation is not None:
                 client.setOutput("File_Annotation", robject(file_annotation))
     finally:
