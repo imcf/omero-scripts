@@ -664,7 +664,7 @@ def write_movie(command_args, conn, omero_image):
     filelist = ",".join(file_names)
 
     ext = format_map[format]
-    movie_name = "Movie"
+    movie_name = omero_image.getName()
     if "Movie_Name" in command_args:
         movie_name = command_args["Movie_Name"]
         movie_name = os.path.basename(movie_name)
