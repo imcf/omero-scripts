@@ -182,7 +182,9 @@ def build_avi(size_x, size_y, filelist, fps, movie_name, format):
             + ":type=jpg -ovc lavc -lavcopts vcodec=mpeg4 -o %s" % movie_name
         )
     log(args)
+    print(f"\n===== calling [{program} {args}] =====")
     os.system(program + args)
+    print(f"===== finished [{program} {args}] =====\n\n")
 
 
 def range_from_list(list, index):
