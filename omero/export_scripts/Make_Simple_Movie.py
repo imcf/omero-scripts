@@ -881,7 +881,7 @@ def run_script():
             file_annotation, message = write_movie(command_args, conn, omero_image)
 
             # return this fileAnnotation to the client.
-            client.setOutput("Message", rstring(omero_image))
+            client.setOutput("Message", rstring("TESTTESTTESTTEST"))
             client.setOutput("Message", rstring(message))
             if file_annotation is not None:
                 client.setOutput("File_Annotation", robject(file_annotation))
