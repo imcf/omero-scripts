@@ -775,12 +775,20 @@ def run_script():
 
         command_args = client.getInputs(unwrap=True)
 
-        file_annotation, message = write_movie(command_args, conn)
+        images, log_message = script_utils.get_objects(conn, command_args)
 
-        # return this fileAnnotation to the client.
-        client.setOutput("Message", rstring(message))
-        if file_annotation is not None:
-            client.setOutput("File_Annotation", robject(file_annotation))
+        if not images:
+            # Log error message if not images returned
+            client.setOutput("Message", rstring(log_message))
+        else:
+            for image in images:
+                # Retrieve annotation, message and write movie
+                file_annotation, message = write_movie(command_args, conn, image)
+
+                # Return this fileAnnotation to the client and output message
+                client.setOutput("Message", rstring(message))
+                if file_annotation is not None:
+                    client.setOutput("File_Annotation", robject(file_annotation))
     finally:
         client.closeSession()
 
