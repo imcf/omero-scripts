@@ -51,6 +51,18 @@ from io import BytesIO
 
 from PIL import Image, ImageDraw
 
+try:
+    from types import StringTypes
+except ImportError:
+    StringTypes = str
+
+try:
+    from PIL import Image, ImageDraw  # see ticket:2597
+except ImportError:
+    import Image
+    import ImageDraw  # see ticket:2597
+
+
 COLOURS = script_utils.COLOURS
 COLOURS.update(script_utils.EXTRA_COLOURS)    # name:(rgba) map
 
