@@ -439,9 +439,14 @@ def paste_watermark(image, watermark):
     return image
 
 
-def write_movie(command_args, conn):
+def write_movie(command_args, conn, image):
     """
     Makes the movie.
+
+    :param command_args: Arguments passed to the command containing
+                         parameters for movie creation.
+    :param conn: The connection object used to interact with OMERO server.
+    :param image: The image object to be used for creating the movie.
 
     :return: Returns the file annotation
     """
@@ -454,13 +459,8 @@ def write_movie(command_args, conn):
     update_service = session.getUpdateService()
     raw_file_store = session.createRawFileStore()
 
-    # Get the images
-    images, log_message = script_utils.get_objects(conn, command_args)
-    message += log_message
-    if not images:
-        return None, message
-    # Get the first valid image (should be expanded to process the list)
-    omero_image = images[0]
+    # Get the image
+    omero_image = image
 
     if command_args["RenderingDef_ID"] >= 0:
         rid = command_args["RenderingDef_ID"]
